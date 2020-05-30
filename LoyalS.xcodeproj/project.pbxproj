@@ -3,18 +3,39 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B11462F24475CCE008F10C5 /* CategoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11462E24475CCE008F10C5 /* CategoryTableViewController.swift */; };
+		8B11463124475D53008F10C5 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463024475D53008F10C5 /* Category.swift */; };
+		8B11463324475E4C008F10C5 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463224475E4C008F10C5 /* CategoryTableViewCell.swift */; };
+		8B1146362447840A008F10C5 /* Discount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1146352447840A008F10C5 /* Discount.swift */; };
+		8B11463824478483008F10C5 /* DiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463724478483008F10C5 /* DiscountTableViewCell.swift */; };
+		8B11463A244784A6008F10C5 /* DiscountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B114639244784A6008F10C5 /* DiscountTableViewController.swift */; };
+		8B11463C2449E992008F10C5 /* PlaceTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463B2449E992008F10C5 /* PlaceTableViewController.swift */; };
+		8B11463E2449E9A6008F10C5 /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463D2449E9A6008F10C5 /* PlaceViewController.swift */; };
+		8B1146402449E9C1008F10C5 /* PlaceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B11463F2449E9C1008F10C5 /* PlaceTableViewCell.swift */; };
+		8B1E5C742475825B00EAE1EF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E5C732475825B00EAE1EF /* User.swift */; };
+		8B1E5C762475827500EAE1EF /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1E5C752475827500EAE1EF /* Place.swift */; };
+		8B26678D24437EAF003FE8A7 /* InterfaceUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26678C24437EAF003FE8A7 /* InterfaceUtilities.swift */; };
+		8B26678F244382E8003FE8A7 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B26678E244382E8003FE8A7 /* SignInViewController.swift */; };
+		8B266791244382FF003FE8A7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B266790244382FF003FE8A7 /* SignUpViewController.swift */; };
+		8B39963E2481309500DDF321 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B39963D2481309500DDF321 /* GoogleService-Info.plist */; };
+		8B58E7332444C31000E2FACA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E7322444C31000E2FACA /* WelcomeViewController.swift */; };
+		8B58E7352447408500E2FACA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E7342447408500E2FACA /* ForgotPasswordViewController.swift */; };
+		8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66A218247FE4DB003F73EE /* UserViewController.swift */; };
+		8BB35A3C247585160069FC8D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3B247585160069FC8D /* APIManager.swift */; };
+		8BB35A3E247586590069FC8D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3D247586590069FC8D /* Constants.swift */; };
+		8BB35A40247F89770069FC8D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3F247F89770069FC8D /* Utilities.swift */; };
+		8BB35A42247FA3B40069FC8D /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB35A41247FA3B40069FC8D /* MapKit.framework */; };
+		8BB35A44247FA3C10069FC8D /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BB35A43247FA3C10069FC8D /* CoreLocation.framework */; };
 		8BB54648244215DC003EAF38 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB54647244215DC003EAF38 /* AppDelegate.swift */; };
-		8BB5464A244215DC003EAF38 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB54649244215DC003EAF38 /* ViewController.swift */; };
 		8BB5464D244215DC003EAF38 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB5464B244215DC003EAF38 /* Main.storyboard */; };
 		8BB54650244215DC003EAF38 /* LoyalS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5464E244215DC003EAF38 /* LoyalS.xcdatamodeld */; };
 		8BB54652244215DE003EAF38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BB54651244215DE003EAF38 /* Assets.xcassets */; };
 		8BB54655244215DE003EAF38 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BB54653244215DE003EAF38 /* LaunchScreen.storyboard */; };
-		8BB54660244215DE003EAF38 /* LoyalSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5465F244215DE003EAF38 /* LoyalSTests.swift */; };
-		8BB5466B244215DE003EAF38 /* LoyalSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB5466A244215DE003EAF38 /* LoyalSUITests.swift */; };
+		CF57267D2CCE400A8B3A7378 /* Pods_LoyalS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9B4C3C7F44A09FAA7C57B9 /* Pods_LoyalS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,20 +56,41 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64BD1C2C9D723E803E07AC1D /* Pods-LoyalS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoyalS.debug.xcconfig"; path = "Target Support Files/Pods-LoyalS/Pods-LoyalS.debug.xcconfig"; sourceTree = "<group>"; };
+		8B11462E24475CCE008F10C5 /* CategoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewController.swift; sourceTree = "<group>"; };
+		8B11463024475D53008F10C5 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		8B11463224475E4C008F10C5 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
+		8B1146352447840A008F10C5 /* Discount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Discount.swift; sourceTree = "<group>"; };
+		8B11463724478483008F10C5 /* DiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountTableViewCell.swift; sourceTree = "<group>"; };
+		8B114639244784A6008F10C5 /* DiscountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountTableViewController.swift; sourceTree = "<group>"; };
+		8B11463B2449E992008F10C5 /* PlaceTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewController.swift; sourceTree = "<group>"; };
+		8B11463D2449E9A6008F10C5 /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		8B11463F2449E9C1008F10C5 /* PlaceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceTableViewCell.swift; sourceTree = "<group>"; };
+		8B1E5C732475825B00EAE1EF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		8B1E5C752475827500EAE1EF /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
+		8B26678C24437EAF003FE8A7 /* InterfaceUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceUtilities.swift; sourceTree = "<group>"; };
+		8B26678E244382E8003FE8A7 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
+		8B266790244382FF003FE8A7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		8B39963D2481309500DDF321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B58E7322444C31000E2FACA /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		8B58E7342447408500E2FACA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		8B66A218247FE4DB003F73EE /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		8BB35A3B247585160069FC8D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		8BB35A3D247586590069FC8D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8BB35A3F247F89770069FC8D /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		8BB35A41247FA3B40069FC8D /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		8BB35A43247FA3C10069FC8D /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8BB54644244215DC003EAF38 /* LoyalS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LoyalS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BB54647244215DC003EAF38 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BB54649244215DC003EAF38 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8BB5464C244215DC003EAF38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BB5464F244215DC003EAF38 /* LoyalS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LoyalS.xcdatamodel; sourceTree = "<group>"; };
 		8BB54651244215DE003EAF38 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BB54654244215DE003EAF38 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8BB54656244215DE003EAF38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB5465B244215DE003EAF38 /* LoyalSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoyalSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB5465F244215DE003EAF38 /* LoyalSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalSTests.swift; sourceTree = "<group>"; };
-		8BB54661244215DE003EAF38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8BB54666244215DE003EAF38 /* LoyalSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoyalSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8BB5466A244215DE003EAF38 /* LoyalSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoyalSUITests.swift; sourceTree = "<group>"; };
-		8BB5466C244215DE003EAF38 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E9B4C3C7F44A09FAA7C57B9 /* Pods_LoyalS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoyalS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B32A9E4CB1989657B25F3DCF /* Pods-LoyalS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoyalS.release.xcconfig"; path = "Target Support Files/Pods-LoyalS/Pods-LoyalS.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +98,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BB35A44247FA3C10069FC8D /* CoreLocation.framework in Frameworks */,
+				8BB35A42247FA3B40069FC8D /* MapKit.framework in Frameworks */,
+				CF57267D2CCE400A8B3A7378 /* Pods_LoyalS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +121,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04C423436CFDE5FF9F29BA4B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BB35A43247FA3C10069FC8D /* CoreLocation.framework */,
+				8BB35A41247FA3B40069FC8D /* MapKit.framework */,
+				9E9B4C3C7F44A09FAA7C57B9 /* Pods_LoyalS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		33D099886D62DFACD52E4F88 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				64BD1C2C9D723E803E07AC1D /* Pods-LoyalS.debug.xcconfig */,
+				B32A9E4CB1989657B25F3DCF /* Pods-LoyalS.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8B11462D24475CA8008F10C5 /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				8B11462E24475CCE008F10C5 /* CategoryTableViewController.swift */,
+				8B11463224475E4C008F10C5 /* CategoryTableViewCell.swift */,
+				8B11463B2449E992008F10C5 /* PlaceTableViewController.swift */,
+				8B11463D2449E9A6008F10C5 /* PlaceViewController.swift */,
+				8B11463F2449E9C1008F10C5 /* PlaceTableViewCell.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
+		8B114634244783FB008F10C5 /* Discounts */ = {
+			isa = PBXGroup;
+			children = (
+				8B11463724478483008F10C5 /* DiscountTableViewCell.swift */,
+				8B114639244784A6008F10C5 /* DiscountTableViewController.swift */,
+			);
+			path = Discounts;
+			sourceTree = "<group>";
+		};
+		8B1E5C712475822200EAE1EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8B11463024475D53008F10C5 /* Category.swift */,
+				8B1146352447840A008F10C5 /* Discount.swift */,
+				8B1E5C732475825B00EAE1EF /* User.swift */,
+				8B1E5C752475827500EAE1EF /* Place.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8B26678824437DEE003FE8A7 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				8B26678E244382E8003FE8A7 /* SignInViewController.swift */,
+				8B266790244382FF003FE8A7 /* SignUpViewController.swift */,
+				8B58E7322444C31000E2FACA /* WelcomeViewController.swift */,
+				8B58E7342447408500E2FACA /* ForgotPasswordViewController.swift */,
+				8B66A218247FE4DB003F73EE /* UserViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		8B26678B24437E91003FE8A7 /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				8BB54647244215DC003EAF38 /* AppDelegate.swift */,
+				8BB54651244215DE003EAF38 /* Assets.xcassets */,
+				8B26678C24437EAF003FE8A7 /* InterfaceUtilities.swift */,
+			);
+			path = SupportFiles;
+			sourceTree = "<group>";
+		};
+		8BB35A3A247584BB0069FC8D /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8BB35A3B247585160069FC8D /* APIManager.swift */,
+				8BB35A3D247586590069FC8D /* Constants.swift */,
+				8BB35A3F247F89770069FC8D /* Utilities.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 		8BB5463B244215DC003EAF38 = {
 			isa = PBXGroup;
 			children = (
 				8BB54646244215DC003EAF38 /* LoyalS */,
-				8BB5465E244215DE003EAF38 /* LoyalSTests */,
-				8BB54669244215DE003EAF38 /* LoyalSUITests */,
 				8BB54645244215DC003EAF38 /* Products */,
+				33D099886D62DFACD52E4F88 /* Pods */,
+				04C423436CFDE5FF9F29BA4B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,33 +227,19 @@
 		8BB54646244215DC003EAF38 /* LoyalS */ = {
 			isa = PBXGroup;
 			children = (
-				8BB54647244215DC003EAF38 /* AppDelegate.swift */,
-				8BB54649244215DC003EAF38 /* ViewController.swift */,
+				8B39963D2481309500DDF321 /* GoogleService-Info.plist */,
+				8BB35A3A247584BB0069FC8D /* API */,
+				8B1E5C712475822200EAE1EF /* Model */,
+				8B114634244783FB008F10C5 /* Discounts */,
+				8B11462D24475CA8008F10C5 /* Places */,
+				8B26678B24437E91003FE8A7 /* SupportFiles */,
+				8B26678824437DEE003FE8A7 /* Login */,
 				8BB5464B244215DC003EAF38 /* Main.storyboard */,
-				8BB54651244215DE003EAF38 /* Assets.xcassets */,
 				8BB54653244215DE003EAF38 /* LaunchScreen.storyboard */,
 				8BB54656244215DE003EAF38 /* Info.plist */,
 				8BB5464E244215DC003EAF38 /* LoyalS.xcdatamodeld */,
 			);
 			path = LoyalS;
-			sourceTree = "<group>";
-		};
-		8BB5465E244215DE003EAF38 /* LoyalSTests */ = {
-			isa = PBXGroup;
-			children = (
-				8BB5465F244215DE003EAF38 /* LoyalSTests.swift */,
-				8BB54661244215DE003EAF38 /* Info.plist */,
-			);
-			path = LoyalSTests;
-			sourceTree = "<group>";
-		};
-		8BB54669244215DE003EAF38 /* LoyalSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8BB5466A244215DE003EAF38 /* LoyalSUITests.swift */,
-				8BB5466C244215DE003EAF38 /* Info.plist */,
-			);
-			path = LoyalSUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,9 +249,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BB5466F244215DE003EAF38 /* Build configuration list for PBXNativeTarget "LoyalS" */;
 			buildPhases = (
+				DA171E0270AB99E8E997B997 /* [CP] Check Pods Manifest.lock */,
 				8BB54640244215DC003EAF38 /* Sources */,
 				8BB54641244215DC003EAF38 /* Frameworks */,
 				8BB54642244215DC003EAF38 /* Resources */,
+				F7AFCF6362D79D580E10BE38 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,11 +315,9 @@
 					};
 					8BB5465A244215DE003EAF38 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 8BB54643244215DC003EAF38;
 					};
 					8BB54665244215DE003EAF38 = {
 						CreatedOnToolsVersion = 10.1;
-						TestTargetID = 8BB54643244215DC003EAF38;
 					};
 				};
 			};
@@ -233,6 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BB54655244215DE003EAF38 /* LaunchScreen.storyboard in Resources */,
+				8B39963E2481309500DDF321 /* GoogleService-Info.plist in Resources */,
 				8BB54652244215DE003EAF38 /* Assets.xcassets in Resources */,
 				8BB5464D244215DC003EAF38 /* Main.storyboard in Resources */,
 			);
@@ -254,14 +369,75 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DA171E0270AB99E8E997B997 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LoyalS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F7AFCF6362D79D580E10BE38 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoyalS/Pods-LoyalS-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LoyalS/Pods-LoyalS-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LoyalS/Pods-LoyalS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8BB54640244215DC003EAF38 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB5464A244215DC003EAF38 /* ViewController.swift in Sources */,
+				8B11463A244784A6008F10C5 /* DiscountTableViewController.swift in Sources */,
+				8BB35A3C247585160069FC8D /* APIManager.swift in Sources */,
+				8B11463C2449E992008F10C5 /* PlaceTableViewController.swift in Sources */,
+				8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */,
+				8B58E7352447408500E2FACA /* ForgotPasswordViewController.swift in Sources */,
+				8B11463E2449E9A6008F10C5 /* PlaceViewController.swift in Sources */,
+				8B1146362447840A008F10C5 /* Discount.swift in Sources */,
+				8B266791244382FF003FE8A7 /* SignUpViewController.swift in Sources */,
+				8B26678D24437EAF003FE8A7 /* InterfaceUtilities.swift in Sources */,
+				8B1E5C742475825B00EAE1EF /* User.swift in Sources */,
+				8BB35A40247F89770069FC8D /* Utilities.swift in Sources */,
 				8BB54650244215DC003EAF38 /* LoyalS.xcdatamodeld in Sources */,
+				8B11463124475D53008F10C5 /* Category.swift in Sources */,
+				8B11463824478483008F10C5 /* DiscountTableViewCell.swift in Sources */,
+				8B11463324475E4C008F10C5 /* CategoryTableViewCell.swift in Sources */,
+				8B1146402449E9C1008F10C5 /* PlaceTableViewCell.swift in Sources */,
+				8B11462F24475CCE008F10C5 /* CategoryTableViewController.swift in Sources */,
+				8BB35A3E247586590069FC8D /* Constants.swift in Sources */,
+				8B26678F244382E8003FE8A7 /* SignInViewController.swift in Sources */,
+				8B1E5C762475827500EAE1EF /* Place.swift in Sources */,
 				8BB54648244215DC003EAF38 /* AppDelegate.swift in Sources */,
+				8B58E7332444C31000E2FACA /* WelcomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +445,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB54660244215DE003EAF38 /* LoyalSTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +452,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8BB5466B244215DE003EAF38 /* LoyalSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,6 +608,7 @@
 		};
 		8BB54670244215DE003EAF38 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 64BD1C2C9D723E803E07AC1D /* Pods-LoyalS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -452,6 +627,7 @@
 		};
 		8BB54671244215DE003EAF38 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B32A9E4CB1989657B25F3DCF /* Pods-LoyalS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -472,7 +648,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UFGZF6CY79;
 				INFOPLIST_FILE = LoyalSTests/Info.plist;
@@ -485,7 +660,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoyalS.app/LoyalS";
 			};
 			name = Debug;
 		};
@@ -493,7 +667,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UFGZF6CY79;
 				INFOPLIST_FILE = LoyalSTests/Info.plist;
@@ -506,7 +679,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LoyalS.app/LoyalS";
 			};
 			name = Release;
 		};
@@ -524,9 +696,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = IrynaHorbachova.LoyalSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LoyalS;
 			};
 			name = Debug;
 		};
@@ -544,9 +716,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = IrynaHorbachova.LoyalSUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = LoyalS;
 			};
 			name = Release;
 		};
