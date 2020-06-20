@@ -7,7 +7,7 @@ import Foundation
 import SwiftyJSON
 
 class Place {
-    var id: Int?
+    var id: String?
     var title: String?
     var rating: Int?
     var address: String?
@@ -20,7 +20,7 @@ class Place {
     // initialize object from json data
     
     init(json: JSON) {
-        self.id = json["id"].int
+        self.id = json["id"].string
         self.title = json["title"].string
         self.rating = json["rating"].int
         self.address = json["address"].string

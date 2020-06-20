@@ -24,6 +24,8 @@
 		8B39963E2481309500DDF321 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B39963D2481309500DDF321 /* GoogleService-Info.plist */; };
 		8B58E7332444C31000E2FACA /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E7322444C31000E2FACA /* WelcomeViewController.swift */; };
 		8B58E7352447408500E2FACA /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B58E7342447408500E2FACA /* ForgotPasswordViewController.swift */; };
+		8B658FE3249E437300760CE4 /* UsedDiscountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FE2249E437300760CE4 /* UsedDiscountTableViewCell.swift */; };
+		8B658FE5249E5A8200760CE4 /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */; };
 		8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66A218247FE4DB003F73EE /* UserViewController.swift */; };
 		8BB35A3C247585160069FC8D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3B247585160069FC8D /* APIManager.swift */; };
 		8BB35A3E247586590069FC8D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3D247586590069FC8D /* Constants.swift */; };
@@ -74,6 +76,8 @@
 		8B39963D2481309500DDF321 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B58E7322444C31000E2FACA /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		8B58E7342447408500E2FACA /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		8B658FE2249E437300760CE4 /* UsedDiscountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsedDiscountTableViewCell.swift; sourceTree = "<group>"; };
+		8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
 		8B66A218247FE4DB003F73EE /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		8BB35A3B247585160069FC8D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8BB35A3D247586590069FC8D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				8B11463B2449E992008F10C5 /* PlaceTableViewController.swift */,
 				8B11463D2449E9A6008F10C5 /* PlaceViewController.swift */,
 				8B11463F2449E9C1008F10C5 /* PlaceTableViewCell.swift */,
+				8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -157,6 +162,7 @@
 			children = (
 				8B11463724478483008F10C5 /* DiscountTableViewCell.swift */,
 				8B114639244784A6008F10C5 /* DiscountTableViewController.swift */,
+				8B658FE2249E437300760CE4 /* UsedDiscountTableViewCell.swift */,
 			);
 			path = Discounts;
 			sourceTree = "<group>";
@@ -417,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B11463A244784A6008F10C5 /* DiscountTableViewController.swift in Sources */,
+				8B658FE3249E437300760CE4 /* UsedDiscountTableViewCell.swift in Sources */,
 				8BB35A3C247585160069FC8D /* APIManager.swift in Sources */,
 				8B11463C2449E992008F10C5 /* PlaceTableViewController.swift in Sources */,
 				8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */,
@@ -425,6 +432,7 @@
 				8B1146362447840A008F10C5 /* Discount.swift in Sources */,
 				8B266791244382FF003FE8A7 /* SignUpViewController.swift in Sources */,
 				8B26678D24437EAF003FE8A7 /* InterfaceUtilities.swift in Sources */,
+				8B658FE5249E5A8200760CE4 /* CheckInViewController.swift in Sources */,
 				8B1E5C742475825B00EAE1EF /* User.swift in Sources */,
 				8BB35A40247F89770069FC8D /* Utilities.swift in Sources */,
 				8BB54650244215DC003EAF38 /* LoyalS.xcdatamodeld in Sources */,

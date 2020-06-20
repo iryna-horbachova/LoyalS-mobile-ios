@@ -4,11 +4,13 @@
 //
 
 import UIKit
+import CoreLocation
 
-class PlaceTableViewController: UITableViewController, UISearchBarDelegate {
+class PlaceTableViewController: UITableViewController, UISearchBarDelegate, CLLocationManagerDelegate {
     
     // MARK: - Variables
 
+    var userLocation = "Kharkiv"
     var category: Category?
     var places = [Place]()
     var filteredPlaces = [Place]()
@@ -16,7 +18,10 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate {
         return searchBar.text?.isEmpty ?? true
     }
     
+    var locationManager: CLLocationManager!
+    
     // MARK: - Outlets
+    
     let activityIndicator = UIActivityIndicatorView()
     
     @IBOutlet weak var searchBar: UISearchBar!
@@ -27,24 +32,44 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
 
         self.navigationItem.title = category?.title
+        
+        // get user's location
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            
+        }
+        
+        guard let exposedLocation = locationManager.location else {
+            print("*** Error in \(#function): exposedLocation is nil")
+            return
+        }
+        
+        locationManager.getPlace(for: exposedLocation) { placemark in
+            guard let placemark = placemark else { return }
+            
+            if let city = placemark.locality {
+                self.userLocation = city
+                print(self.userLocation)
+            }
+            
+        }
+        
         loadPlaces()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-
-    }
     
     // MARK: - Methods
+    
     func loadPlaces() {
         Utilities.showActivityIndicator(activityIndicator, view)
-        APIManager.shared.getPlaces(category: (category?.id)!, city: "kharkiv") { (json) in
+        APIManager.shared.getPlaces(category: (category?.id)!, city: userLocation) { (json) in
             if json != nil {
                 self.places = []
                 
@@ -66,6 +91,7 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate {
             }
         }
     }
+    
     
     // MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

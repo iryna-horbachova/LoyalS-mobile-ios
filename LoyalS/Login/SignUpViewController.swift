@@ -63,68 +63,100 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - Sign up
-
-    @IBAction func signUp(_ sender: Any) {
-        if passwordTextField.text != retypePasswordTextField.text {
-            let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type your password", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else if passwordTextField.text!.isEmpty || retypePasswordTextField.text!.isEmpty || emailTextField.text!.isEmpty {
-            let alertController = UIAlertController(title: "Fields cannot be empty", message: "Please type needed information into all fields", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-            
-        }
-        else if !Utilities.isValidEmail(emailTextField.text!) {
-            let alertController = UIAlertController(title: "Invalid e-mail", message: "Please enter your valid e-mail", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else if !Utilities.isValidPassword(emailTextField.text!) {
-            let alertController = UIAlertController(title: "Invalid password", message: "Your password must be at lest 8 characters", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else {
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                if error == nil {
-                    let currentUser = Auth.auth().currentUser
-                    currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                        if error == nil {
-                            print("idToken2")
-                            print(idToken)
-                            APIManager.shared.register(idToken: idToken!) {
-                                print("REGISTER")
-                            }
-                            print("USER INFO")
-                            APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
-                  
-                                User.currentUser.setInfo(json: json, authtoken: idToken!)
-                                
-                            }
-                            self.performSegue(withIdentifier: "userSignUp", sender: self)
-                        }
-                    }
-                } else {
-                    let alertController = UIAlertController(title: "Invalid data", message: "Account could not be created, please enter valid data", preferredStyle: .alert)
-                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(okAction)
-                    
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "userSignUp" {
+            if passwordTextField.text != retypePasswordTextField.text {
+                let alertController = UIAlertController(title: "Passwords do not match", message: "Please re-type your password", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                DispatchQueue.main.async{
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }
+            else if passwordTextField.text!.isEmpty || retypePasswordTextField.text!.isEmpty || emailTextField.text!.isEmpty {
+                let alertController = UIAlertController(title: "Fields cannot be empty", message: "Please type needed information into all fields", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                DispatchQueue.main.async{
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }
+            else if !Utilities.isValidEmail(emailTextField.text!) {
+                let alertController = UIAlertController(title: "Invalid e-mail", message: "Please enter your valid e-mail", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                DispatchQueue.main.async{
                     self.present(alertController, animated: true, completion: nil)
                 }
             }
+            else if !Utilities.isValidPassword(passwordTextField.text!) {
+                let alertController = UIAlertController(title: "Invalid password", message: "Your password must be at lest 8 characters", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                DispatchQueue.main.async{
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+                // valid input, signing up user
+            else {
+                Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                    if error == nil {
+                        let currentUser = Auth.auth().currentUser
+                        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                            if error == nil {
+                                APIManager.shared.register(idToken: idToken!) {
+                                    print("REGISTER")
+                                }
+                                print("USER INFO")
+                                
+                                User.currentUser.authtoken = idToken
+                                User.currentUser.email = currentUser?.email
+                                
+                                print(User.currentUser.authtoken)
+                                print(User.currentUser.email)
+                                
+                                if let pictureURL = currentUser?.photoURL {
+                                    User.currentUser.pictureURL = pictureURL.path
+                                    print(User.currentUser.pictureURL)
+                                }
+                                
+                                
+                                
+                                APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
+                                    
+                                    //User.currentUser.setInfo(json: json, authtoken: idToken!)
+                                    
+                                }
+                                
+                                //self.performSegue(withIdentifier: "userSignUp", sender: self)
+                            }
+                            
+                        }
+                        
+                    } else {
+                        let alertController = UIAlertController(title: "Invalid data", message: "Account could not be created, please enter valid data", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(okAction)
+                        
+                        DispatchQueue.main.async{
+                            self.present(alertController, animated: true, completion: nil)
+                        }
+                    }
+                    
+                }
+                return true
+                
+            }
             
         }
-
+        return false
     }
     
 }

@@ -71,48 +71,75 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Authentication
     
-    @IBAction func signIn(_ sender: Any) {
-        if passwordTextField.text!.isEmpty || emailTextField.text!.isEmpty {
-            let alertController = UIAlertController(title: "Fields cannot be empty", message: "Please type needed information into all fields", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else if !Utilities.isValidEmail(emailTextField.text!) {
-            let alertController = UIAlertController(title: "Invalid e-mail", message: "Please enter your valid e-mail", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else if !Utilities.isValidPassword(emailTextField.text!) {
-            let alertController = UIAlertController(title: "Invalid password", message: "Your password must be at lest 8 characters", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-            alertController.addAction(okAction)
-            
-            self.present(alertController, animated: true, completion: nil)
-        }
-        else {
-            Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
-                if error == nil {
-                    let currentUser = Auth.auth().currentUser
-                    currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
-                        if error == nil {
-                                APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
-                                    User.currentUser.setInfo(json: json, authtoken: idToken!)
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var shouldSegue = false
+        
+        if identifier == "userSignIn" {
+            if passwordTextField.text!.isEmpty || emailTextField.text!.isEmpty {
+                let alertController = UIAlertController(title: "Fields cannot be empty", message: "Please type needed information into all fields", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else if !Utilities.isValidEmail(emailTextField.text!) {
+                let alertController = UIAlertController(title: "Invalid e-mail", message: "Please enter your valid e-mail", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else if !Utilities.isValidPassword(emailTextField.text!) {
+                let alertController = UIAlertController(title: "Invalid password", message: "Your password must be at lest 8 characters", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(okAction)
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else {
+                print("sign in")
+                Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
+                    if error == nil {
+                        print("error is nil in sign in")
+                        let currentUser = Auth.auth().currentUser
+                        
+                        User.currentUser.email = currentUser?.email
+                        
+                        currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
+                            if error == nil {
+                                //User.currentUser.authtoken = idToken
+                                
+                                print("setting email")
+                                print(User.currentUser.email)
+                                print("photourl")
+                                if let pictureURL = currentUser?.photoURL {
+                                    print("path exists")
+                                    User.currentUser.pictureURL = pictureURL.path
+                                    print(User.currentUser.pictureURL)
                                 }
+                                
+                                //     APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
+                                // User.currentUser.setInfo(json: json, authtoken: idToken!)
+                                //      }
+                            } else {
+                                
+                            }
                         }
+                        shouldSegue = true
+                    } else {
+                        let alertController = UIAlertController(title: "Error!", message: "Invalid e-mail or password", preferredStyle: .alert)
+                        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                        alertController.addAction(alertAction)
+                        self.present(alertController, animated: true, completion: nil)
+                        
                     }
-                    self.performSegue(withIdentifier: "userSignIn", sender: self)
-                } else {
-                    let alertController = UIAlertController(title: "Error!", message: "Invalid e-mail or password", preferredStyle: .alert)
-                    let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                    alertController.addAction(alertAction)
-                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
+        print("SHOULD SEGUE")
+        print(shouldSegue)
+        return shouldSegue
+        
     }
     
     

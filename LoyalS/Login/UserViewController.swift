@@ -28,24 +28,32 @@ class UserViewController: UIViewController {
         print("setting up page")
         if Auth.auth().currentUser != nil {
             if User.currentUser.authtoken == nil {
-                print("authtoken is nil")
                 let currentUser = Auth.auth().currentUser
                 currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                     if error == nil {
-                        print(idToken)
                         APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
-                            print("getting user info")
                             User.currentUser.setInfo(json: json, authtoken: idToken!)
-                            print(User.currentUser.authtoken)
-                            }
+                        }
                     }
                 }
             }
+            
+            // setting labels
+            
             nameLabel.text = User.currentUser.name
-            currentBalanceLabel.text = String(User.currentUser.currentBalance!)
-            coinsSpentLabel.text = String(User.currentUser.coinsSpent!)
+            
+            if let currentBalance = User.currentUser.currentBalance {
+                currentBalanceLabel.text = String(currentBalance)
+            }
+            
+            if let coinsSpent = User.currentUser.coinsSpent {
+                coinsSpentLabel.text = String(coinsSpent)
+            }
+
         }
     }
+    
+    
     
     // MARK: - Sign out
     

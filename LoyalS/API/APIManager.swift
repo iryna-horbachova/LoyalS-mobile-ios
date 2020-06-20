@@ -54,14 +54,7 @@ class APIManager {
             (response) in
             switch response.result {
             case .success(let value):
-                print("Success in getUserInfo")
-                print("not jsonData")
-                print(value)
-                print("jsonData")
-                
-                
                 let jsonData = JSON(value)
-                print(jsonData)
                 
                 completionHandler(jsonData)
                 break
@@ -76,12 +69,12 @@ class APIManager {
     
     // MARK: - User checkin
     
-    func checkIn(placeId: String, userId: String, coins: Int, completionHandler: @escaping () -> Void) {
+    // get coins gained from this checkin
+    func checkIn(placeId: String, userId: String,  completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(CHECKIN_PATH)
         let params: [String: Any] = [
             "place" : placeId,
             "user" : userId,
-            "coins" : coins
         ]
         
         Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding(), headers: nil).responseJSON {
@@ -89,8 +82,7 @@ class APIManager {
             switch response.result {
             case .success(let value):
                 let jsonData = JSON(value)
-                print(jsonData)
-                completionHandler()
+                completionHandler(jsonData)
                 break
                 
             case .failure(let error):
@@ -156,7 +148,7 @@ class APIManager {
     
     // MARK: - User checkin
     
-    func getAvailableCoupons(userId: String, completionHandler: @escaping (JSON) -> Void) {
+    func getAvailableCoupons(userId: String, completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(AVAILABLE_COUPONS_PATH)
         let params: [String: Any] = [
             "userId": userId

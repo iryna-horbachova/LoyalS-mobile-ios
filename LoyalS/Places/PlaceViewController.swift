@@ -13,6 +13,7 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
     
     var place: Place?
     var locationManager: CLLocationManager!
+    var placeLocation: CLLocation!
     
     // MARK: - Outlets
     
@@ -74,7 +75,8 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
             geocoder.geocodeAddressString(address) { (placemarks, error) in
                 if (error == nil) {
                     if let placemark = placemarks?.first {
-                        let coordinates: CLLocationCoordinate2D = placemark.location!.coordinate
+                        self.placeLocation = placemark.location!
+                        let coordinates: CLLocationCoordinate2D = self.placeLocation.coordinate
                         
                         let region = MKCoordinateRegion(center: coordinates, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
                         
@@ -97,5 +99,51 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
         
         self.map.setRegion(region, animated: true)
     }
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var errorMessage = "Invalid segue identifier :("
+        if identifier == "userCheckIn" {
+            // user can perform check in only within range of the place's specified location
+            
+            if let userLocation = locationManager.location {
+                if userLocation.distance(from: placeLocation) < 10 {
+                    return true
+                } else {
+                    errorMessage = "You must be in this place to make a checkin!"
+                }
+            } else {
+                errorMessage = "You must enable this application to access location to make checkins!"
+            }
 
+        }
+        
+        let alertController = UIAlertController(title: "Checkin can't be made", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userCheckIn" {
+            // send data of coins gained from our API to destination CheckInViewController
+            
+            guard let checkInVC = segue.destination as? CheckInViewController else {
+                fatalError("Unexpected segue destination")
+            }
+            
+            APIManager.shared.checkIn(placeId: (place?.id)!, userId: User.currentUser.id!) {(json) in
+                if json != nil {
+                    let coinsGained = json!["coins_gained"].int
+                    checkInVC.coinsGained = coinsGained
+                } else {
+                    fatalError("Server error, please try again later")
+                }
+                
+            }
+
+        }
+    }
+    
 }

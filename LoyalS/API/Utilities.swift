@@ -1,29 +1,24 @@
-//
-//  Utilities.swift
-//  LoyalS
-//
-//  Created by Irachka on 5/28/20.
-//  Copyright © 2020 Iryna. All rights reserved.
-//
-
 import Foundation
 import UIKit
 import SwiftyJSON
+import CoreLocation
 
 class Utilities {
     
     // Function to fetch image via network and make it specified UIImage
     
     static func loadImage(imageView: UIImageView, imageURL: URL) {
-        //let imageURL: URL = URL(string: urlString)!
         
-        URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
-            guard let data = data, error == nil else { return }
-            DispatchQueue.main.async(execute: {
-                imageView.image = UIImage(data: data)
-            })
-            }.resume()
-        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let urlContents = try? Data(contentsOf: imageURL)
+            // UI stuff can e done only in main queue
+            DispatchQueue.main.async {
+                if let imageData = urlContents {
+                    imageView.image = UIImage(data: imageData)
+                    
+                }
+            }
+        }
     }
     
     // Function to show and hide UIActivityIndicator on page load
@@ -80,4 +75,32 @@ extension JSON {
         dateFormatter.timeZone = TimeZone.autoupdatingCurrent
         return dateFormatter
     }()
+}
+
+// Extension to get user's city
+
+extension CLLocationManager {
+    
+    
+    func getPlace(for location: CLLocation,
+                  completion: @escaping (CLPlacemark?) -> Void) {
+        
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(location) { placemarks, error in
+            
+            guard error == nil else {
+                print("*** Error in \(#function): \(error!.localizedDescription)")
+                completion(nil)
+                return
+            }
+            
+            guard let placemark = placemarks?[0] else {
+                print("*** Error in \(#function): placemark is nil")
+                completion(nil)
+                return
+            }
+            
+            completion(placemark)
+        }
+    }
 }

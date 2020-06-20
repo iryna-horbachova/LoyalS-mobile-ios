@@ -47,7 +47,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                         <connections>
-                                            <action selector="signOut:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kx4-Hc-en5"/>
                                             <segue destination="gGU-GK-aDO" kind="show" identifier="userSignOut" id="Qx3-CZ-e3V"/>
                                         </connections>
                                     </button>
@@ -397,6 +396,9 @@
                                         <state key="normal" title="CHECK IN">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="E92-a8-wrn" kind="show" identifier="userCheckIn" id="Tk6-rY-Ttz"/>
+                                        </connections>
                                     </button>
                                     <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Urg-rW-c9a">
                                         <rect key="frame" x="0.0" y="522" width="414" height="414"/>
@@ -577,7 +579,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="signIn:" destination="LDR-GQ-XWJ" eventType="touchUpInside" id="zns-9S-V4q"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="userSignIn" id="u8U-0T-fVF"/>
                                 </connections>
                             </button>
@@ -669,7 +670,6 @@
                         <outlet property="closeButton" destination="a1a-25-VEd" id="Q4F-LN-TjE"/>
                         <outlet property="emailTextField" destination="8cU-07-ljV" id="UMP-Ol-Dyf"/>
                         <outlet property="passwordTextField" destination="VP4-s0-H5w" id="7UJ-H2-T9Z"/>
-                        <outlet property="signInButton" destination="noQ-ff-Anl" id="9wY-5t-ZDn"/>
                         <outlet property="signInFacebookButton" destination="mZL-W6-Q68" id="2am-fj-M5Q"/>
                         <outlet property="signInGoogleButton" destination="tXt-QI-RzF" id="h0j-FK-zuf"/>
                     </connections>
@@ -727,6 +727,9 @@
                                         <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="v3W-cH-uhi" kind="show" id="Tbu-G3-ccX"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.91462267939999997" green="0.97137210100000004" blue="0.98657718679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -865,7 +868,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="signUp:" destination="0cD-ly-VRF" eventType="touchUpInside" id="LHT-8h-5yY"/>
                                     <segue destination="g8p-co-cUN" kind="show" identifier="userSignUp" id="UD8-ow-bqn"/>
                                 </connections>
                             </button>
@@ -915,7 +917,6 @@
                         <outlet property="emailTextField" destination="1dE-mH-Zfw" id="aym-wF-sGh"/>
                         <outlet property="passwordTextField" destination="ilI-Oq-PDu" id="pdR-BG-b6a"/>
                         <outlet property="retypePasswordTextField" destination="81T-we-t0N" id="N9O-Dd-h2W"/>
-                        <outlet property="signUpButton" destination="5c7-Fx-ikB" id="wCg-2e-lKJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mdT-1u-G6v" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1105,37 +1106,39 @@
             </objects>
             <point key="canvasLocation" x="2441" y="-929"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="5M4-Kd-HP2">
+        <!--Check In View Controller-->
+        <scene sceneID="2NG-DQ-eU1">
             <objects>
-                <viewController id="2bf-OO-NWu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Vfb-ug-u7Y">
+                <viewController id="E92-a8-wrn" customClass="CheckInViewController" customModule="LoyalS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HJG-fR-bJm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ney-l2-GXK">
-                                <rect key="frame" x="136" y="399" width="151" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
-                                <state key="normal" title="Check my profile">
-                                    <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Thanks for your check-in! You've gained 100 coins" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udW-hF-W0e">
-                                <rect key="frame" x="56" y="226" width="311" height="115"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for your check-in! You've gained 100 coins" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fFY-a0-YmG">
+                                <rect key="frame" x="60" y="214" width="294" height="140"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="140" id="XHt-Jt-u5p"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.91462267939999997" green="0.97137210100000004" blue="0.98657718679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="0fz-fM-tn4"/>
+                        <constraints>
+                            <constraint firstItem="fFY-a0-YmG" firstAttribute="leading" secondItem="Ql4-Hj-Km8" secondAttribute="leading" constant="60" id="2Zw-P9-d35"/>
+                            <constraint firstItem="Ql4-Hj-Km8" firstAttribute="trailing" secondItem="fFY-a0-YmG" secondAttribute="trailing" constant="60" id="BFN-Nk-E8z"/>
+                            <constraint firstItem="fFY-a0-YmG" firstAttribute="top" secondItem="Ql4-Hj-Km8" secondAttribute="top" constant="150" id="jP5-o3-sN0"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Ql4-Hj-Km8"/>
                     </view>
+                    <connections>
+                        <outlet property="checkInLabel" destination="fFY-a0-YmG" id="DvD-6g-Gvr"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bHr-0O-9aH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gj7-j5-kq0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7187" y="-1921"/>
+            <point key="canvasLocation" x="7130" y="-1922"/>
         </scene>
     </scenes>
     <resources>
