@@ -164,6 +164,7 @@
                         <outlet property="coinsSpentLabel" destination="U2T-7K-lSU" id="yqm-Tf-Y5i"/>
                         <outlet property="currentBalanceLabel" destination="xn9-A1-Fjx" id="K9w-v3-FKv"/>
                         <outlet property="nameLabel" destination="vzV-92-ptb" id="qUq-sM-8bV"/>
+                        <outlet property="userAvatarImageView" destination="s5f-jT-TQD" id="4nr-UV-Zne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

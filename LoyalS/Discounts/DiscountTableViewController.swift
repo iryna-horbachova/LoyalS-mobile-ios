@@ -132,8 +132,8 @@ class DiscountTableViewController: BaseViewController {
                     User.currentUser.currentBalance! -= selectedDiscount.price!
                     User.currentUser.coinsSpent! += selectedDiscount.price!
                     
-                    let discount_relative_path = json!["QR_image_URL"].string!
-                    let discountQRImageURL = NSURL(string: BASE_URL)?.appendingPathComponent(discount_relative_path)
+                    let discountRelativePath = json!["QR_image_URL"].string!
+                    let discountQRImageURL = NSURL(string: BASE_URL)?.appendingPathComponent(discountRelativePath)
                     
                     discountVC.discountQRImageURL = discountQRImageURL
                 } else {

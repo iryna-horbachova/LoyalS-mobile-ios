@@ -1,6 +1,7 @@
 import UIKit
 
 class DiscountViewController: UIViewController {
+    
     // MARK: - Variables
     
     var discountQRImageURL: URL?

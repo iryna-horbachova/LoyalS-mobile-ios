@@ -1,18 +1,17 @@
-//
-//  UserViewController.swift
-//  LoyalS
-//
-
 import UIKit
 import Firebase
 
 class UserViewController: UIViewController {
+    
+    // MARK: - Variables
+     let activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Outlets
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var currentBalanceLabel: UILabel!
     @IBOutlet weak var coinsSpentLabel: UILabel!
+    @IBOutlet weak var userAvatarImageView: UIImageView!
     
     // MARK: - Lifecycle methods
     
@@ -37,6 +36,8 @@ class UserViewController: UIViewController {
                     }
                 }
             }
+            // showing activity indicator
+            Utilities.showActivityIndicator(activityIndicator, view)
             
             // setting labels
             
@@ -49,6 +50,19 @@ class UserViewController: UIViewController {
             if let coinsSpent = User.currentUser.coinsSpent {
                 coinsSpentLabel.text = String(coinsSpent)
             }
+            
+            // setting user's image
+            
+            if let relativeUserAvatarURL = User.currentUser.pictureURL {
+                let fullUserAvatarImageURL = NSURL(string: BASE_URL)?.appendingPathComponent(relativeUserAvatarURL)
+                
+                Utilities.loadImage(imageView: userAvatarImageView
+                    , imageURL: fullUserAvatarImageURL!)
+            }
+            
+            // hiding activity indicator after everything is set
+            
+            Utilities.hideActivityIndicator(activityIndicator)
 
         }
     }
