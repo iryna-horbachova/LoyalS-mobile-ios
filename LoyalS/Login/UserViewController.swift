@@ -1,10 +1,12 @@
 import UIKit
 import Firebase
 
-class UserViewController: UIViewController {
+class UserViewController: UIViewController,  UITableViewDelegate,  UITableViewDataSource {
     
     // MARK: - Variables
-     let activityIndicator = UIActivityIndicatorView()
+    
+    var usedDiscounts = [Discount]()
+    let activityIndicator = UIActivityIndicatorView()
     
     // MARK: - Outlets
     
@@ -13,15 +15,74 @@ class UserViewController: UIViewController {
     @IBOutlet weak var coinsSpentLabel: UILabel!
     @IBOutlet weak var userAvatarImageView: UIImageView!
     
+    @IBOutlet weak var tableView: UITableView!
+    
     // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setupTableView()
         setUpPage()
+        loadDiscountsHistory()
     }
     
-    // MARK: - Page setup
+    // MARK: Managing TableView with history of discounts
+    
+    func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return usedDiscounts.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "userDiscountCell", for: indexPath)
+        if let cell = cell as? UsedDiscountTableViewCell {
+            let discount = usedDiscounts[indexPath.row]
+            
+            cell.discountTitle.text = discount.title
+            // cell.categoryTitleLabel.text = discount.category
+            
+            cell.priceButton.setTitle(String(discount.price!), for: .normal)
+            
+            if let relativeDiscountPictureURL = discount.pictureURL {
+                let fullDiscountPictureURL = NSURL(string: BASE_URL)?.appendingPathComponent(relativeDiscountPictureURL)
+                
+                Utilities.loadImage(imageView: cell.discountImageView
+                    , imageURL: fullDiscountPictureURL!)
+                
+            }
+        }
+        
+        
+        return cell
+    }
+    
+    // MARK: - loading history of discounts
+    
+    func loadDiscountsHistory() {
+        Utilities.showActivityIndicator(activityIndicator, view)
+        APIManager.shared.getAvailableDiscounts(userId: User.currentUser.id!, city: User.currentUser.currentLocation ?? User.defaultLocation) { (json) in
+            if json != nil {
+                self.usedDiscounts = []
+                
+                if let listDiscounts = json!.array {
+                    for item in listDiscounts {
+                        let discount = Discount(json: item)
+                        self.usedDiscounts.append(discount)
+                    }
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+    
+     // MARK: - Profile setup
     
     func setUpPage() {
         print("setting up page")
@@ -68,7 +129,6 @@ class UserViewController: UIViewController {
     }
     
     
-    
     // MARK: - Sign out
     
     @IBAction func signOut(_ sender: Any) {
@@ -80,5 +140,4 @@ class UserViewController: UIViewController {
             print("Sign out error")
         }
     }
-
 }

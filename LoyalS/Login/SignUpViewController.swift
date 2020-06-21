@@ -1,9 +1,3 @@
-//
-//  SignUpViewController.swift
-//  LoyalS
-//
-
-
 import UIKit
 import Firebase
 
@@ -15,8 +9,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // UITextFieldDelegate
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
@@ -35,10 +27,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var closeButton: UIButton! {
         didSet {
-            //closeButton.setTitle("", for: .normal)
-            //let closeIcon = UIImage(named: "icon-close")?.withRenderingMode(.alwaysTemplate)
-            //closeButton.setImage(closeIcon, for: .normal)
-            //closeButton.imageView?.contentMode = .scaleAspectFill
             closeButton.tintColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
         }
     }
@@ -112,30 +100,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                             if error == nil {
                                 APIManager.shared.register(idToken: idToken!) {
-                                    print("REGISTER")
+                                
                                 }
-                                print("USER INFO")
                                 
-                                User.currentUser.authtoken = idToken
-                                User.currentUser.email = currentUser?.email
-                                
-                                print(User.currentUser.authtoken)
-                                print(User.currentUser.email)
+                              //  User.currentUser.authtoken = idToken
+                              //  User.currentUser.email = currentUser?.email
                                 
                                 if let pictureURL = currentUser?.photoURL {
                                     User.currentUser.pictureURL = pictureURL.path
-                                    print(User.currentUser.pictureURL)
+                                   
                                 }
-                                
-                                
-                                
+                            
                                 APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
                                     
-                                    //User.currentUser.setInfo(json: json, authtoken: idToken!)
+                                    User.currentUser.setInfo(json: json, authtoken: idToken!)
                                     
                                 }
-                                
-                                //self.performSegue(withIdentifier: "userSignUp", sender: self)
                             }
                             
                         }

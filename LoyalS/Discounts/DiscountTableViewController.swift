@@ -70,6 +70,14 @@ class DiscountTableViewController: BaseViewController {
             let dateString = dateFormatter.string(from: discount.startDate!) + "-" + dateFormatter.string(from: discount.endDate!)
             cell.startEndDateLabel.text = dateString
             
+            // loading discount picture
+            if let relativeDiscountPictureURL = discount.pictureURL {
+                let fullDiscountPictureURL = NSURL(string: BASE_URL)?.appendingPathComponent(relativeDiscountPictureURL)
+                
+                Utilities.loadImage(imageView: cell.discountImageView
+                    , imageURL: fullDiscountPictureURL!)
+                
+            }
         }
 
         return cell

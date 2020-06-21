@@ -120,6 +120,8 @@ class APIManager {
     }
     
     // MARK: - Get discounts used by user
+    // send userID
+    // get array of discounts
     
     func getUsedDiscounts(userId: String, completionHandler: @escaping (JSON) -> Void) {
         let url = baseURL!.appendingPathComponent(USED_COUPONS_PATH)
@@ -132,7 +134,6 @@ class APIManager {
             switch response.result {
             case .success(let value):
                 let jsonData = JSON(value)
-                print(jsonData)
                 
                 completionHandler(jsonData)
                 break

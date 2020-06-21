@@ -1,9 +1,3 @@
-//
-//  Discount.swift
-//  LoyalS
-//
-
-
 import Foundation
 import SwiftyJSON
 
@@ -15,6 +9,7 @@ class Discount {
     var category: String?
     var place: String?
     var price: Int?
+    var pictureURL: String?
     
     // initialize object from json data
     
@@ -26,5 +21,6 @@ class Discount {
         self.category = json["category"].string
         self.place = json["place"].string
         self.price = json["price"].int
+        self.pictureURL = json["picture_url"].string
     }
 }
