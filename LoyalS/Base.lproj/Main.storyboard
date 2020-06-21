@@ -821,6 +821,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="resetPassword:" destination="p2i-uz-61W" eventType="touchUpInside" id="qhK-bw-YHd"/>
                                     <segue destination="v3W-cH-uhi" kind="show" id="Tbu-G3-ccX"/>
                                 </connections>
                             </button>

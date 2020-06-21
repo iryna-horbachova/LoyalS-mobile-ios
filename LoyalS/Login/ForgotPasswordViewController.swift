@@ -1,10 +1,5 @@
-//
-//  ForgotPasswordViewController.swift
-//  LoyalS
-//
-
-
 import UIKit
+import Firebase
 
 class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
@@ -28,6 +23,34 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func returnToPreviousVC(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
+    }
+    
+    @IBAction func resetPassword(_ sender: UIButton) {
+        var errorMessage = "Error occured"
+        if emailTextField.text!.isEmpty {
+            errorMessage = "E-mail field can't be empty!"
+        } else if !Utilities.isValidEmail(emailTextField.text!) {
+            errorMessage = "Invalid e-mail!"
+        } else {
+            Auth.auth().sendPasswordReset(withEmail: emailTextField.text!) { error in
+                if error == nil {
+                    let alertController = UIAlertController(title: "Password was reset", message: errorMessage , preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                    alertController.addAction(okAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                    self.dismiss(animated: true, completion: nil)
+                } else {
+                    errorMessage = "Unexpected error. Check the details and try again"
+                }
+            }
+        }
+        let alertController = UIAlertController(title: "Password can't be reset", message: errorMessage , preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
     }
     
     // MARK: - Application Lifecycle
