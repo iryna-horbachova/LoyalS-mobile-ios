@@ -1,6 +1,6 @@
 import UIKit
 
-class DiscountTableViewController: UITableViewController {
+class DiscountTableViewController: BaseViewController {
     
     // MARK: - Variables
     
@@ -73,5 +73,73 @@ class DiscountTableViewController: UITableViewController {
         }
 
         return cell
+    }
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var errorMessage = "Invalid segue identifier :("
+        if identifier == "buyDiscount" {
+            guard let senderDiscountCell = sender as? DiscountTableViewCell else {
+                fatalError("Unexpected sender")
+            }
+            guard let indexPath = tableView.indexPath(for: senderDiscountCell) else {
+                fatalError("Discount cell is not displayed")
+            }
+            
+            let selectedDiscount = discounts[indexPath.row]
+            
+            // user can buy a discount only if he/she has enough coins on current balance
+            
+            if selectedDiscount.price! <= User.currentUser.currentBalance! {
+                return true
+                
+            } else {
+                errorMessage = "You don't have enough coins!"
+            }
+        }
+        
+        // present an alert telling user what went wrong
+        
+        let alertController = UIAlertController(title: "Discount can't be bought", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        return false
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "buyDiscount" {
+            
+            // get our discount cell and moel
+            
+            guard let senderDiscountCell = sender as? DiscountTableViewCell else {
+                fatalError("Unexpected sender")
+            }
+            guard let indexPath = tableView.indexPath(for: senderDiscountCell) else {
+                fatalError("Discount cell is not displayed")
+            }
+            
+            let selectedDiscount = discounts[indexPath.row]
+            
+            guard let discountVC = segue.destination as? DiscountViewController else {
+                fatalError("Unexpected segue destination")
+            }
+            
+            APIManager.shared.buyDiscount(userId: User.currentUser.id!, discountId: selectedDiscount.id!) {(json) in
+                if json != nil {
+                    User.currentUser.currentBalance! -= selectedDiscount.price!
+                    User.currentUser.coinsSpent! += selectedDiscount.price!
+                    
+                    let discount_relative_path = json!["QR_image_URL"].string!
+                    let discountQRImageURL = NSURL(string: BASE_URL)?.appendingPathComponent(discount_relative_path)
+                    
+                    discountVC.discountQRImageURL = discountQRImageURL
+                } else {
+                    fatalError("Server error, please try again later")
+                }
+            }
+        }
     }
 }

@@ -1,7 +1,4 @@
-//
-//  APIManager.swift
-//  LoyalS
-//
+// Class to manage API to custom Server
 
 import Foundation
 import Alamofire
@@ -44,8 +41,6 @@ class APIManager {
     
     func getUserInfo(idToken: String, completionHandler: @escaping (JSON) -> Void) {
         let url = baseURL!.appendingPathComponent(USER_INFO_PATH)
-        print("IDTOKEN:")
-        print(idToken)
         let headers: HTTPHeaders = [
             "authtoken": idToken
         ]
@@ -98,7 +93,7 @@ class APIManager {
     // MARK: - Buying a discount
     
     // send userId and DiscountId
-    // get generated QR image URL with needed discount
+    // get generated QR_image_URL with needed discount
     
     func buyDiscount(userId: String, discountId: String, completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(BUY_COUPON_PATH)
@@ -106,7 +101,6 @@ class APIManager {
             "userId" : userId,
             "discountId": discountId
         ]
-        
         
         Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding(), headers: nil).responseJSON {
             (response) in

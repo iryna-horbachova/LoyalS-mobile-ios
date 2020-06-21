@@ -482,7 +482,7 @@
                                                 <constraint firstAttribute="width" constant="70" id="Vet-td-jpC"/>
                                                 <constraint firstAttribute="height" constant="30" id="dhF-6o-i1n"/>
                                             </constraints>
-                                            <state key="normal" title="10 coins">
+                                            <state key="normal" title="10 ">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
                                             <userDefinedRuntimeAttributes>
@@ -490,13 +490,19 @@
                                                     <real key="value" value="5"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <connections>
-                                                <segue destination="qVb-3v-qDL" kind="show" identifier="buyDiscount" id="EM5-Cd-SG6"/>
-                                            </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="coins" translatesAutoresizingMaskIntoConstraints="NO" id="dit-Y9-OcP">
+                                            <rect key="frame" x="369" y="38" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="25" id="db1-VN-jwb"/>
+                                                <constraint firstAttribute="width" constant="25" id="fjj-aC-EeI"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="MfG-LO-ZGJ" firstAttribute="centerY" secondItem="OUv-et-kvo" secondAttribute="centerY" id="0Jr-RJ-7jR"/>
+                                        <constraint firstItem="dit-Y9-OcP" firstAttribute="top" secondItem="OUv-et-kvo" secondAttribute="topMargin" constant="27" id="0lQ-mA-sfK"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="dit-Y9-OcP" secondAttribute="trailing" id="5Ge-pc-ARG"/>
                                         <constraint firstItem="Igu-mE-dFF" firstAttribute="top" secondItem="OUv-et-kvo" secondAttribute="top" constant="5" id="AAn-MS-U6a"/>
                                         <constraint firstItem="Llh-Ol-YgO" firstAttribute="top" secondItem="OUv-et-kvo" secondAttribute="top" constant="5" id="BAw-9O-vda"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Llh-Ol-YgO" secondAttribute="trailing" constant="10" id="C1V-fl-JAz"/>
@@ -512,6 +518,7 @@
                                     <outlet property="discountImageView" destination="Igu-mE-dFF" id="eFO-5R-BaO"/>
                                     <outlet property="discountTitleLabel" destination="uI7-JD-17f" id="cSc-Rj-IuA"/>
                                     <outlet property="startEndDateLabel" destination="A3o-s9-sHN" id="hDe-zy-z1Q"/>
+                                    <segue destination="qVb-3v-qDL" kind="show" identifier="buyDiscount" id="JRA-hG-bqa"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -524,7 +531,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tww-ha-OlI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3309" y="-929"/>
+            <point key="canvasLocation" x="3308.6956521739135" y="-929.34782608695662"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="6KJ-Xc-36n">

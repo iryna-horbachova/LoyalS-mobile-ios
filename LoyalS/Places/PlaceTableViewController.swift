@@ -35,6 +35,8 @@ class PlaceTableViewController: BaseViewController, UISearchBarDelegate {
     // MARK: - Methods
     
     func loadPlaces() {
+        // show activity indicator  while places are loade
+        
         Utilities.showActivityIndicator(activityIndicator, view)
         APIManager.shared.getPlaces(category: (category?.id)!, city: User.currentUser.currentLocation ?? User.defaultLocation) { (json) in
             if json != nil {
@@ -57,6 +59,7 @@ class PlaceTableViewController: BaseViewController, UISearchBarDelegate {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
+        Utilities.hideActivityIndicator(activityIndicator)
     }
     
     

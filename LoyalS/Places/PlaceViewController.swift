@@ -114,9 +114,12 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
 
         }
         
+        // present an alert telling user what went wrong
+        
         let alertController = UIAlertController(title: "Checkin can't be made", message: errorMessage, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
         return false
     }
     
@@ -131,14 +134,13 @@ class PlaceViewController: UIViewController, CLLocationManagerDelegate {
             APIManager.shared.checkIn(placeId: (place?.id)!, userId: User.currentUser.id!) {(json) in
                 if json != nil {
                     let coinsGained = json!["coins_gained"].int
+                    User.currentUser.currentBalance! += coinsGained!
                     checkInVC.coinsGained = coinsGained
                 } else {
                     fatalError("Server error, please try again later")
                 }
-                
             }
-
         }
     }
-    
+
 }
