@@ -69,7 +69,9 @@ class APIManager {
     
     // MARK: - User checkin
     
-    // get coins gained from this checkin
+    // send id of the user who makes a check in and id of the place where check in is made
+    // get coins gained from this check in
+    
     func checkIn(placeId: String, userId: String,  completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(CHECKIN_PATH)
         let params: [String: Any] = [
@@ -93,13 +95,16 @@ class APIManager {
         }
     }
     
-    // MARK: - Buying a coupon
+    // MARK: - Buying a discount
     
-    func buyCoupon(userId: String, couponId: String, completionHandler: @escaping () -> Void) {
+    // send userId and DiscountId
+    // get generated QR image URL with needed discount
+    
+    func buyDiscount(userId: String, discountId: String, completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(BUY_COUPON_PATH)
         let params : [String: Any] = [
             "userId" : userId,
-            "couponId": couponId
+            "discountId": discountId
         ]
         
         
@@ -107,9 +112,9 @@ class APIManager {
             (response) in
             switch response.result {
             case .success(let value):
-                //let jsonData = JSON(value)
+                let jsonData = JSON(value)
                 
-                completionHandler()
+                completionHandler(jsonData)
                 break
                 
             case .failure(let error):
@@ -120,9 +125,9 @@ class APIManager {
         }
     }
     
-    // MARK: - Get coupons used by user
+    // MARK: - Get discounts used by user
     
-    func getUsedCoupons(userId: String, completionHandler: @escaping (JSON) -> Void) {
+    func getUsedDiscounts(userId: String, completionHandler: @escaping (JSON) -> Void) {
         let url = baseURL!.appendingPathComponent(USED_COUPONS_PATH)
         let params: [String: Any] = [
             "userId": userId
@@ -146,12 +151,15 @@ class APIManager {
         }
     }
     
-    // MARK: - User checkin
+    // MARK: - get all available duscounts for current user (discounts, which user did not used yet and which are suitable for current date)
+    // send userID and city
+    // get array of discounts
     
-    func getAvailableCoupons(userId: String, completionHandler: @escaping (JSON?) -> Void) {
+    func getAvailableDiscounts(userId: String, city: String, completionHandler: @escaping (JSON?) -> Void) {
         let url = baseURL!.appendingPathComponent(AVAILABLE_COUPONS_PATH)
         let params: [String: Any] = [
-            "userId": userId
+            "userId": userId,
+            "city": city
         ]
         
         Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding(), headers: nil).responseJSON {

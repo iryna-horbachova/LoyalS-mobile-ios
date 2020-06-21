@@ -475,19 +475,33 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfG-LO-ZGJ">
-                                            <rect key="frame" x="343" y="34" width="51" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <state key="normal" title="10">
-                                                <color key="titleColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MfG-LO-ZGJ">
+                                            <rect key="frame" x="334" y="35" width="70" height="30"/>
+                                            <color key="backgroundColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="70" id="Vet-td-jpC"/>
+                                                <constraint firstAttribute="height" constant="30" id="dhF-6o-i1n"/>
+                                            </constraints>
+                                            <state key="normal" title="10 coins">
+                                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="5"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <segue destination="qVb-3v-qDL" kind="show" identifier="buyDiscount" id="EM5-Cd-SG6"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="MfG-LO-ZGJ" firstAttribute="centerY" secondItem="OUv-et-kvo" secondAttribute="centerY" id="0Jr-RJ-7jR"/>
                                         <constraint firstItem="Igu-mE-dFF" firstAttribute="top" secondItem="OUv-et-kvo" secondAttribute="top" constant="5" id="AAn-MS-U6a"/>
                                         <constraint firstItem="Llh-Ol-YgO" firstAttribute="top" secondItem="OUv-et-kvo" secondAttribute="top" constant="5" id="BAw-9O-vda"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Llh-Ol-YgO" secondAttribute="trailing" constant="10" id="C1V-fl-JAz"/>
                                         <constraint firstAttribute="bottom" secondItem="Igu-mE-dFF" secondAttribute="bottom" constant="5" id="E2I-lP-KpO"/>
+                                        <constraint firstAttribute="trailing" secondItem="MfG-LO-ZGJ" secondAttribute="trailing" constant="10" id="GSn-Ar-opv"/>
                                         <constraint firstAttribute="bottom" secondItem="Llh-Ol-YgO" secondAttribute="bottom" constant="5" id="GaT-Zh-dRb"/>
                                         <constraint firstItem="Igu-mE-dFF" firstAttribute="leading" secondItem="OUv-et-kvo" secondAttribute="leading" constant="5" id="Q1g-18-5Ik"/>
                                         <constraint firstItem="Llh-Ol-YgO" firstAttribute="leading" secondItem="Igu-mE-dFF" secondAttribute="trailing" constant="5" id="R9Z-u0-ri7"/>
@@ -579,7 +593,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="userSignIn" id="u8U-0T-fVF"/>
+                                    <segue destination="g8p-co-cUN" kind="show" identifier="userSignIn" id="fk7-18-Twd"/>
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="bVb-7l-yK0">
@@ -634,7 +648,7 @@
                                     <color key="titleColor" red="0.64800995880000001" green="0.6526303578" blue="0.6664915548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="p2i-uz-61W" kind="show" id="kPY-jz-7pn"/>
+                                    <segue destination="p2i-uz-61W" kind="show" identifier="resetPassword" id="kPY-jz-7pn"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zf7-BE-5B3">
@@ -1140,6 +1154,48 @@
             </objects>
             <point key="canvasLocation" x="7130" y="-1922"/>
         </scene>
+        <!--Discount View Controller-->
+        <scene sceneID="neT-GR-2mH">
+            <objects>
+                <viewController id="qVb-3v-qDL" customClass="DiscountViewController" customModule="LoyalS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cFh-b9-8r5">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="H9y-IL-W7H">
+                                <rect key="frame" x="77.666666666666686" y="244" width="259" height="248"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Here is your discount:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="be1-GM-kvz">
+                                        <rect key="frame" x="0.0" y="0.0" width="259" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code" translatesAutoresizingMaskIntoConstraints="NO" id="C1Z-di-NmS">
+                                        <rect key="frame" x="24.333333333333314" y="38" width="210" height="210"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="210" id="HXa-Cm-bBP"/>
+                                            <constraint firstAttribute="height" constant="210" id="PeJ-wG-H97"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.91462267939999997" green="0.97137210100000004" blue="0.98657718679999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="H9y-IL-W7H" firstAttribute="centerX" secondItem="cFh-b9-8r5" secondAttribute="centerX" id="uNg-oB-wTW"/>
+                            <constraint firstItem="H9y-IL-W7H" firstAttribute="centerY" secondItem="cFh-b9-8r5" secondAttribute="centerY" id="wxz-lF-LPn"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xhD-U3-fM7"/>
+                    </view>
+                    <connections>
+                        <outlet property="discountQRImageView" destination="C1Z-di-NmS" id="6ml-XP-iEF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ymc-dC-adm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4179.7101449275369" y="-927.71739130434787"/>
+        </scene>
     </scenes>
     <resources>
         <image name="coins" width="50" height="50"/>
@@ -1150,8 +1206,9 @@
         <image name="icon-phone" width="25" height="25"/>
         <image name="icon-star" width="25" height="25"/>
         <image name="profile" width="430" height="376"/>
+        <image name="qr-code" width="16" height="16"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="u8U-0T-fVF"/>
+        <segue reference="fk7-18-Twd"/>
     </inferredMetricsTieBreakers>
 </document>

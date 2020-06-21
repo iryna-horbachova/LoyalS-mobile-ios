@@ -1,10 +1,6 @@
-//
-//  User.swift
-//  LoyalS
-//
-
 import Foundation
 import SwiftyJSON
+import CoreLocation
 
 class User {
     var id: String?
@@ -14,6 +10,9 @@ class User {
     var currentBalance: Int?
     var coinsSpent: Int?
     var authtoken: String?
+    
+    var currentLocation: String?
+    static var defaultLocation = "Kharkiv, Ukraine"
     
     static let currentUser = User()
     
@@ -41,5 +40,7 @@ class User {
         self.coinsSpent = nil
         
         self.pictureURL = nil
+        self.currentLocation = nil
     }
+    
 }

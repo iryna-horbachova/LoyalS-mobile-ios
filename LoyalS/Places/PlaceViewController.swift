@@ -1,8 +1,3 @@
-//
-//  PlaceViewController.swift
-//  LoyalS
-//
-
 import UIKit
 import MapKit
 import CoreLocation

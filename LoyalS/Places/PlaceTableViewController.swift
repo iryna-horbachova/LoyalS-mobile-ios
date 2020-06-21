@@ -1,16 +1,10 @@
-//
-//  PlaceTableViewController.swift
-//  LoyalS
-//
-
 import UIKit
 import CoreLocation
 
-class PlaceTableViewController: UITableViewController, UISearchBarDelegate, CLLocationManagerDelegate {
+class PlaceTableViewController: BaseViewController, UISearchBarDelegate {
     
     // MARK: - Variables
 
-    var userLocation = "Kharkiv"
     var category: Category?
     var places = [Place]()
     var filteredPlaces = [Place]()
@@ -18,7 +12,6 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate, CLLo
         return searchBar.text?.isEmpty ?? true
     }
     
-    var locationManager: CLLocationManager!
     
     // MARK: - Outlets
     
@@ -35,32 +28,6 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate, CLLo
 
         self.navigationItem.title = category?.title
         
-        // get user's location
-        
-        if CLLocationManager.locationServicesEnabled() {
-            locationManager = CLLocationManager()
-            locationManager.delegate = self
-            locationManager.desiredAccuracy = kCLLocationAccuracyBest
-            locationManager.requestAlwaysAuthorization()
-            locationManager.startUpdatingLocation()
-            
-        }
-        
-        guard let exposedLocation = locationManager.location else {
-            print("*** Error in \(#function): exposedLocation is nil")
-            return
-        }
-        
-        locationManager.getPlace(for: exposedLocation) { placemark in
-            guard let placemark = placemark else { return }
-            
-            if let city = placemark.locality {
-                self.userLocation = city
-                print(self.userLocation)
-            }
-            
-        }
-        
         loadPlaces()
     }
     
@@ -69,7 +36,7 @@ class PlaceTableViewController: UITableViewController, UISearchBarDelegate, CLLo
     
     func loadPlaces() {
         Utilities.showActivityIndicator(activityIndicator, view)
-        APIManager.shared.getPlaces(category: (category?.id)!, city: userLocation) { (json) in
+        APIManager.shared.getPlaces(category: (category?.id)!, city: User.currentUser.currentLocation ?? User.defaultLocation) { (json) in
             if json != nil {
                 self.places = []
                 
