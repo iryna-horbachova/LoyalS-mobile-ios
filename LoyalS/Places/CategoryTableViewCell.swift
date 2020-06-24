@@ -8,7 +8,5 @@ class CategoryTableViewCell: UITableViewCell {
 
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var categoryImageView: UIImageView!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
+
 }

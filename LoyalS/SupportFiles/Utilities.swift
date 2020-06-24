@@ -53,6 +53,7 @@ class Utilities {
         let minPasswordLength = 8
         return password.count >= minPasswordLength
     }
+
     
 }
 

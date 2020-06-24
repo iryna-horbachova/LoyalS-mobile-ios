@@ -51,7 +51,7 @@ class PlaceTableViewController: BaseViewController, UISearchBarDelegate {
                     self.tableView.reloadData()
                 }
             } else {
-                print("Unfortunately no places were found")
+        
                 let alertController = UIAlertController(title: "No places", message: "Unfortunately no places were found based on your preferences" , preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
                 alertController.addAction(okAction)

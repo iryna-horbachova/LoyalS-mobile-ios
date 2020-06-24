@@ -8,41 +8,13 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    @IBOutlet weak var closeButton: UIButton! {
-        didSet {
-            closeButton.tintColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
-        }
-    }
+    @IBOutlet weak var closeButton: UIButton!
     
     @IBOutlet weak var signInButton: UIButton! {
         didSet {
             signInButton.layer.cornerRadius = 10
             signInButton.layer.borderWidth = 1
-            signInButton.layer.borderColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
-        }
-    }
-    @IBOutlet weak var signInFacebookButton: UIButton! {
-        didSet {
-            signInFacebookButton.layer.cornerRadius = 10
-            signInFacebookButton.layer.borderWidth = 1
-            signInFacebookButton.layer.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            
-            let fbIcon = UIImage(named: "icon-facebook")?.withRenderingMode(.alwaysTemplate)
-            signInFacebookButton.setImage(fbIcon, for: .normal)
-            signInFacebookButton.imageView?.contentMode = .scaleAspectFill
-            signInFacebookButton.tintColor = .white
-        }
-    }
-    @IBOutlet weak var signInGoogleButton: UIButton! {
-        didSet {
-            signInGoogleButton.layer.cornerRadius = 10
-            signInGoogleButton.layer.borderWidth = 1
-            
-            let googleIcon = UIImage(named: "icon-google")?.withRenderingMode(.alwaysTemplate)
-            signInGoogleButton.setImage(googleIcon, for: .normal)
-            signInGoogleButton.imageView?.contentMode = .scaleAspectFill
-            signInGoogleButton.tintColor = .white
-           // signInGoogleButton.imageEdgeInsets = UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 20)
+            signInButton.layer.borderColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
         }
     }
     
@@ -51,19 +23,19 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: UITextFieldDelegate
-    
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        }
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-       
+       textField.placeholder = nil
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
-    }
     
     // MARK: - Authentication
     
@@ -115,6 +87,8 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     return true
                 }
             }
+        } else if identifier == "resetPassword" {
+            return true
         }
         
         let alertController = UIAlertController(title: "Error occured", message: errorMessage, preferredStyle: .alert)

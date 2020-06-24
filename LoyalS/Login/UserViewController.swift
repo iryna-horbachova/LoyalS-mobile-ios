@@ -87,7 +87,6 @@ class UserViewController: UIViewController,  UITableViewDelegate,  UITableViewDa
      // MARK: - Profile setup
     
     func setUpPage() {
-        print("setting up page")
         if Auth.auth().currentUser != nil {
             if User.currentUser.authtoken == nil {
                 let currentUser = Auth.auth().currentUser

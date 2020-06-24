@@ -10,8 +10,4 @@ class DiscountTableViewCell: UITableViewCell {
     
     @IBOutlet weak var discountImageView: UIImageView!
     
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
 }

@@ -51,7 +51,6 @@ class CategoryTableViewController: UITableViewController {
         return cell
     }
     
-
     
     // MARK: - Navigation
 
@@ -71,9 +70,7 @@ class CategoryTableViewController: UITableViewController {
                 placesVC.category = categories![indexPath.row]
             }
         }
-        
     }
-
 }
 
 

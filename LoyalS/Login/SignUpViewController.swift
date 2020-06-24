@@ -19,15 +19,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         didSet {
             signUpButton.layer.cornerRadius = 10
             signUpButton.layer.borderWidth = 1
-            signUpButton.layer.borderColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
+            signUpButton.layer.borderColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
         }
     }
     
-    @IBOutlet weak var closeButton: UIButton! {
-        didSet {
-            closeButton.tintColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
-        }
-    }
+    @IBOutlet weak var closeButton: UIButton!
+    
+    // MARK: - Actions
 
     @IBAction func returnToPreviousVC(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
@@ -37,15 +35,16 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        if textField == emailTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            retypePasswordTextField.becomeFirstResponder()
+        }
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-    
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-
+        textField.placeholder = nil
     }
     
     // MARK: - Sign up

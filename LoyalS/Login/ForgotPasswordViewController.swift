@@ -10,14 +10,10 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         didSet {
             resetPasswordButton.layer.cornerRadius = 10
             resetPasswordButton.layer.borderWidth = 1
-            resetPasswordButton.layer.borderColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
+            resetPasswordButton.layer.borderColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
         }
     }
-    @IBOutlet weak var closeButton: UIButton! {
-        didSet {
-            closeButton.tintColor = #colorLiteral(red: 0.3208748645, green: 0.5747793331, blue: 1, alpha: 1)
-        }
-    }
+    @IBOutlet weak var closeButton: UIButton! 
     
     // MARK: - Actions
     
@@ -26,6 +22,12 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func resetPassword(_ sender: UIButton) {
+        resetPassword()
+    }
+    
+    // MARK: - Methods
+    
+    func resetPassword() {
         var errorMessage = "Error occured"
         if emailTextField.text!.isEmpty {
             errorMessage = "E-mail field can't be empty!"
@@ -50,7 +52,6 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(okAction)
         
         self.present(alertController, animated: true, completion: nil)
-
     }
     
     // MARK: - Application Lifecycle
@@ -72,9 +73,10 @@ class ForgotPasswordViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-
+        textField.placeholder = nil
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        resetPassword()
     }
 }

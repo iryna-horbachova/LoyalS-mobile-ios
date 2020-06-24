@@ -9,12 +9,6 @@ class SuggestPlaceSearchTableViewController: UITableViewController, UISearchResu
     var mapView: MKMapView? = nil
     var handleMapSearchDelegate: HandleMapSearch? 
 
-    // MARK: - Lifecycle methods
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     // MARK: - Methods
     
     func parseAddress(_ selectedItem: MKPlacemark) -> String {

@@ -20,14 +20,8 @@ class WelcomeViewController: UIViewController {
         didSet {
             signInButton.layer.cornerRadius = 10
             signInButton.layer.borderWidth = 1
-            signInButton.layer.borderColor = #colorLiteral(red: 0.5173531467, green: 0.7064570221, blue: 1, alpha: 1)
+            signInButton.layer.borderColor = #colorLiteral(red: 0, green: 0.5628422499, blue: 0.3188166618, alpha: 1)
         }
-    }
-    
-    // MARK: Lifecycle methods
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-
     }
 
 }
