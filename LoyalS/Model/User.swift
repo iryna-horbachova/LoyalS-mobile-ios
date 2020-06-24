@@ -3,13 +3,13 @@ import SwiftyJSON
 import CoreLocation
 
 class User {
-    var id: String? = "1"
-    var name: String? = "1"
-    var email: String? = "1"
-    var pictureURL: String? = "1"
-    var currentBalance: Int? = 1
-    var coinsSpent: Int? = 1
-    var authtoken: String? = "1"
+    var id: String?
+    var name: String?
+    var email: String?
+    var pictureURL: String?
+    var currentBalance: Int?
+    var coinsSpent: Int?
+    var authtoken: String?
     
     var currentLocation: String?
     static var defaultLocation = "Kharkiv, Ukraine"

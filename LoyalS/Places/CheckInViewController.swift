@@ -7,7 +7,7 @@ class CheckInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        checkInLabel.text = "Thanks for your check in! You've gained \(coinsGained) coins!"
+        checkInLabel.text = "Thanks for your check in! You've gained \(String(describing: coinsGained)) coins!"
     }
 
 }
