@@ -28,6 +28,8 @@
 		8B658FE5249E5A8200760CE4 /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */; };
 		8B658FE7249F7BA100760CE4 /* DiscountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FE6249F7BA100760CE4 /* DiscountViewController.swift */; };
 		8B658FE9249F83A900760CE4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FE8249F83A900760CE4 /* BaseViewController.swift */; };
+		8B658FEB24A2401D00760CE4 /* SuggestPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FEA24A2401D00760CE4 /* SuggestPlaceViewController.swift */; };
+		8B658FED24A2450500760CE4 /* SuggestPlaceSearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B658FEC24A2450500760CE4 /* SuggestPlaceSearchTableViewController.swift */; };
 		8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B66A218247FE4DB003F73EE /* UserViewController.swift */; };
 		8BB35A3C247585160069FC8D /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3B247585160069FC8D /* APIManager.swift */; };
 		8BB35A3E247586590069FC8D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BB35A3D247586590069FC8D /* Constants.swift */; };
@@ -82,6 +84,8 @@
 		8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
 		8B658FE6249F7BA100760CE4 /* DiscountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountViewController.swift; sourceTree = "<group>"; };
 		8B658FE8249F83A900760CE4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8B658FEA24A2401D00760CE4 /* SuggestPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestPlaceViewController.swift; sourceTree = "<group>"; };
+		8B658FEC24A2450500760CE4 /* SuggestPlaceSearchTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestPlaceSearchTableViewController.swift; sourceTree = "<group>"; };
 		8B66A218247FE4DB003F73EE /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		8BB35A3B247585160069FC8D /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		8BB35A3D247586590069FC8D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -157,6 +161,8 @@
 				8B11463D2449E9A6008F10C5 /* PlaceViewController.swift */,
 				8B11463F2449E9C1008F10C5 /* PlaceTableViewCell.swift */,
 				8B658FE4249E5A8200760CE4 /* CheckInViewController.swift */,
+				8B658FEA24A2401D00760CE4 /* SuggestPlaceViewController.swift */,
+				8B658FEC24A2450500760CE4 /* SuggestPlaceSearchTableViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -434,6 +440,7 @@
 				8B11463C2449E992008F10C5 /* PlaceTableViewController.swift in Sources */,
 				8B66A219247FE4DB003F73EE /* UserViewController.swift in Sources */,
 				8B58E7352447408500E2FACA /* ForgotPasswordViewController.swift in Sources */,
+				8B658FED24A2450500760CE4 /* SuggestPlaceSearchTableViewController.swift in Sources */,
 				8B11463E2449E9A6008F10C5 /* PlaceViewController.swift in Sources */,
 				8B1146362447840A008F10C5 /* Discount.swift in Sources */,
 				8B266791244382FF003FE8A7 /* SignUpViewController.swift in Sources */,
@@ -454,6 +461,7 @@
 				8B1E5C762475827500EAE1EF /* Place.swift in Sources */,
 				8BB54648244215DC003EAF38 /* AppDelegate.swift in Sources */,
 				8B58E7332444C31000E2FACA /* WelcomeViewController.swift in Sources */,
+				8B658FEB24A2401D00760CE4 /* SuggestPlaceViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
