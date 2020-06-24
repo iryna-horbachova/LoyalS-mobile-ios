@@ -207,5 +207,31 @@ class APIManager {
         }
         
     }
+    
+    // MARK: - API to manage user's place suggestion
+    
+    func suggestPlace(userId: String, suggestedPlace: String, completionHandler: @escaping (JSON?) -> Void) {
+        let url = baseURL!.appendingPathComponent(SUGGEST_PLACE_PATH)
+        let params: [String: Any] = [
+            "suggested_place" : suggestedPlace,
+            "user" : userId,
+            ]
+        
+        Alamofire.request(url!, method: .get, parameters: params, encoding: URLEncoding(), headers: nil).responseJSON {
+            (response) in
+            switch response.result {
+            case .success(let value):
+                let jsonData = JSON(value)
+                completionHandler(jsonData)
+                break
+                
+            case .failure(let error):
+                
+                print("Failure")
+                print(error)
+                break
+            }
+        }
+    }
 
 }

@@ -52,5 +52,9 @@
 	<string>This application requires your location to show places</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This application requires your location to show places</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>This application requires your location to show places</string>
+	<key>NSLocationUsageDescription</key>
+	<string>This application requires your location to show places</string>
 </dict>
 </plist>

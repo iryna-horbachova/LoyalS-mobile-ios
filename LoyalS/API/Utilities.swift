@@ -1,3 +1,5 @@
+// Class with utilities functions which are used throughout the whole program
+
 import Foundation
 import UIKit
 import SwiftyJSON

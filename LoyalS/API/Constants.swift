@@ -1,7 +1,4 @@
-//
-//  Constants.swift
-//  LoyalS
-//
+// Variables which are constant throughout the whole app
 
 // MARK: - API pathes
 
@@ -16,3 +13,5 @@ let USED_COUPONS_PATH = "/user/user_coupons"
 
 let AVAILABLE_COUPONS_PATH = "/coupon"
 let PLACES_PATH = "/place"
+
+let SUGGEST_PLACE_PATH = "/suggest_place"

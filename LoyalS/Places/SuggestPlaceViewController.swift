@@ -1,11 +1,21 @@
 import UIKit
 import MapKit
 
-class SuggestPlaceViewController: UIViewController, CLLocationManagerDelegate {
-    // MARK: - variables
+// custom protocol to display searched place
+
+protocol HandleMapSearch {
+    var selectedPlace: String? { get set }
+    func dropPinZoomIn(_ placemark: MKPlacemark)
+}
+
+class SuggestPlaceViewController: UIViewController, CLLocationManagerDelegate,  HandleMapSearch {
+    
+    // MARK: - Variables
+    var selectedPlace: String?
     
     let locationManager = CLLocationManager()
     var resultSearchController: UISearchController?
+    var selectedPin: MKPlacemark?
     
     // MARK: - Outlets
     
@@ -42,6 +52,12 @@ class SuggestPlaceViewController: UIViewController, CLLocationManagerDelegate {
         resultSearchController?.hidesNavigationBarDuringPresentation = false
         resultSearchController?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
+        
+        // assign map to results VC
+        
+        locationSearchTable.mapView = mapView
+        
+        locationSearchTable.handleMapSearchDelegate = self
     }
     
     // MARK: - CLLocationManagerDelegate
@@ -63,6 +79,61 @@ class SuggestPlaceViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager,
                          didFailWithError error: Error) {
         
+    }
+    
+
+    
+    // MARK: - HandleMapSearch
+    
+    func dropPinZoomIn(_ placemark: MKPlacemark) {
+        // cache the pin
+        selectedPin = placemark
+        // clear existing pins
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "\(city) \(state)"
+        }
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        let region = MKCoordinateRegion(center: placemark.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
+    
+    // MARK: - Navigation
+    
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        var errorMessage = "Invalid segue identifier :("
+        if identifier == "userPlaceSuggestion" {
+            if let selectedPlace = selectedPlace {
+                var errorOccured = false
+                // send request to server
+                APIManager.shared.suggestPlace(userId: User.currentUser.id!, suggestedPlace: selectedPlace) {(json) in
+                    if json == nil {
+                        errorOccured = true
+                        errorMessage = json!["error_message"].string!
+                    }
+                }
+                if !errorOccured {
+                    return true
+                }
+            } else {
+                errorMessage = "Please select a place first"
+            }
+
+        }
+        
+        // present an alert telling user what went wrong
+        
+        let alertController = UIAlertController(title: "Suggestion can not be made", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        self.present(alertController, animated: true, completion: nil)
+        
+        return false
     }
     
 }
