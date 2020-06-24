@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gGU-GK-aDO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="g8p-co-cUN">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -229,7 +229,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" id="ZH0-D1-lwf"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="user-tab" id="ZH0-D1-lwf"/>
                     <connections>
                         <outlet property="coinsSpentLabel" destination="U2T-7K-lSU" id="yqm-Tf-Y5i"/>
                         <outlet property="currentBalanceLabel" destination="xn9-A1-Fjx" id="K9w-v3-FKv"/>
@@ -967,7 +967,7 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="tHu-xq-eaj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="hhq-cD-LEN" kind="relationship" relationship="viewControllers" id="QXS-2V-FcX"/>
@@ -1097,7 +1097,7 @@
         <scene sceneID="han-QA-dHn">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hhq-cD-LEN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Places" id="uJa-Qy-Wni"/>
+                    <tabBarItem key="tabBarItem" title="Places" image="place-tab" id="uJa-Qy-Wni"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ylT-It-0aS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1123,7 +1123,7 @@
         <scene sceneID="BYW-0m-7Pf">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kco-wC-OKL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Discounts" id="tdZ-5V-LtN"/>
+                    <tabBarItem key="tabBarItem" title="Discounts" image="discounts-tab" id="tdZ-5V-LtN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Pgm-Ha-02a">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1193,7 +1193,7 @@
                                         <color key="textColor" red="0.0" green="0.56284224989999998" blue="0.31881666180000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qr-code" translatesAutoresizingMaskIntoConstraints="NO" id="C1Z-di-NmS">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="C1Z-di-NmS">
                                         <rect key="frame" x="24.5" y="38" width="210" height="210"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="210" id="HXa-Cm-bBP"/>
@@ -1390,13 +1390,15 @@
     <resources>
         <image name="coins" width="50" height="50"/>
         <image name="discount-default" width="280" height="280"/>
+        <image name="discounts-tab" width="30" height="30"/>
         <image name="icon-dollar" width="50" height="50"/>
         <image name="icon-hours" width="32" height="32"/>
         <image name="icon-marker" width="25" height="25"/>
         <image name="icon-phone" width="25" height="25"/>
         <image name="icon-star" width="25" height="25"/>
+        <image name="place-tab" width="30" height="30"/>
         <image name="profile" width="430" height="376"/>
-        <image name="qr-code" width="16" height="16"/>
+        <image name="user-tab" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="fk7-18-Twd"/>
