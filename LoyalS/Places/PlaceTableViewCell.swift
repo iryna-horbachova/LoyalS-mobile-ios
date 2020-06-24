@@ -1,8 +1,3 @@
-//
-//  PlaceTableViewCell.swift
-//  LoyalS
-//
-
 import UIKit
 
 class PlaceTableViewCell: UITableViewCell {

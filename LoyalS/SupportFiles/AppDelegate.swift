@@ -1,8 +1,3 @@
-//
-//  AppDelegate.swift
-//  LoyalS
-//
-
 import UIKit
 import CoreData
 import Firebase

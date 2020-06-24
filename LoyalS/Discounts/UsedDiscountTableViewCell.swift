@@ -1,5 +1,7 @@
 import UIKit
 
+// Cell to display user's history of bought discounts
+
 class UsedDiscountTableViewCell: UITableViewCell {
     
     @IBOutlet weak var discountTitle: UILabel!

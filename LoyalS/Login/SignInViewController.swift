@@ -1,8 +1,3 @@
-//
-//  SignInViewController.swift
-//  LoyalS
-//
-
 import UIKit
 import Firebase
 

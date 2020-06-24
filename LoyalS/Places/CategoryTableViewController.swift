@@ -1,9 +1,6 @@
-//
-//  CategoryTableViewController.swift
-//  LoyalS
-//
-
 import UIKit
+
+// Class to display static categories of places
 
 class CategoryTableViewController: UITableViewController {
     

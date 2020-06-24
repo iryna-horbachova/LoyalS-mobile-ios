@@ -204,6 +204,7 @@
 		8B26678B24437E91003FE8A7 /* SupportFiles */ = {
 			isa = PBXGroup;
 			children = (
+				8BB35A3F247F89770069FC8D /* Utilities.swift */,
 				8BB54647244215DC003EAF38 /* AppDelegate.swift */,
 				8BB54651244215DE003EAF38 /* Assets.xcassets */,
 				8B26678C24437EAF003FE8A7 /* InterfaceUtilities.swift */,
@@ -217,7 +218,6 @@
 			children = (
 				8BB35A3B247585160069FC8D /* APIManager.swift */,
 				8BB35A3D247586590069FC8D /* Constants.swift */,
-				8BB35A3F247F89770069FC8D /* Utilities.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";

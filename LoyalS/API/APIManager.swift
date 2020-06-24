@@ -1,8 +1,8 @@
-// Class to manage API to custom Server
-
 import Foundation
 import Alamofire
 import SwiftyJSON
+
+// Class to manage API of app's backend
 
 class APIManager {
     

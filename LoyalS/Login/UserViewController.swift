@@ -1,6 +1,8 @@
 import UIKit
 import Firebase
 
+// Controller of user's profile
+
 class UserViewController: UIViewController,  UITableViewDelegate,  UITableViewDataSource {
     
     // MARK: - Variables

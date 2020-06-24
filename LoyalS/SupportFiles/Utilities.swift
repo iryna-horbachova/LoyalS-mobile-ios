@@ -1,9 +1,10 @@
-// Class with utilities functions which are used throughout the whole program
-
 import Foundation
 import UIKit
 import SwiftyJSON
 import CoreLocation
+
+// Class with utilities functions and extensions which are used throughout the whole program
+
 
 class Utilities {
     

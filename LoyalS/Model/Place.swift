@@ -1,8 +1,3 @@
-//
-//  Place.swift
-//  LoyalS
-//
-
 import Foundation
 import SwiftyJSON
 

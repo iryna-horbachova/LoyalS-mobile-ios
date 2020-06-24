@@ -2,7 +2,8 @@ import UIKit
 import CoreLocation
 
 
-// Base class for Places- and Discounts- TableViewController
+// Base class for Places- and Discounts- TableViewControllers (with location functionality)
+
 class BaseViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: - Variabled
@@ -40,7 +41,6 @@ class BaseViewController: UITableViewController, CLLocationManagerDelegate {
                 
                 if let city = placemark.locality {
                     User.currentUser.currentLocation = city
-                    print(User.currentUser.currentLocation)
                 }
                 
             }

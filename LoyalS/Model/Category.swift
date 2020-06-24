@@ -1,12 +1,7 @@
-//
-//  File.swift
-//  LoyalS
-//
-
-// Structure to hold static categories of places
-
 import Foundation
 import UIKit
+
+// struct for static categories of our places
 
 struct Category {
     var title: String

@@ -1,11 +1,7 @@
-//
-//  WelcomeViewController.swift
-//  LoyalS
-//
-
-
 import UIKit
 import Firebase
+
+// Entry point to our application
 
 class WelcomeViewController: UIViewController {
     

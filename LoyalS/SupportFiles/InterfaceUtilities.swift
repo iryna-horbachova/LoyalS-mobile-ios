@@ -1,9 +1,3 @@
-//
-//  File.swift
-//  LoyalS
-//
-
-
 import Foundation
 import UIKit
 

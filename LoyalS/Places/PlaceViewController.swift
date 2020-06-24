@@ -2,6 +2,8 @@ import UIKit
 import MapKit
 import CoreLocation
 
+// Class to display selected place
+
 class PlaceViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Variables
