@@ -51,13 +51,14 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     }
 
     // MARK: UITextFieldDelegate
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
-       // saveButton.isEnabled = false
+       
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
@@ -67,81 +68,72 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
     // MARK: - Authentication
     
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        var shouldSegue = false
-        
+        var errorMessage = "Invalid segue identifier"
         if identifier == "userSignIn" {
             if passwordTextField.text!.isEmpty || emailTextField.text!.isEmpty {
-                let alertController = UIAlertController(title: "Fields cannot be empty", message: "Please type needed information into all fields", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                errorMessage = "Fields can't be empty!"
             }
             else if !Utilities.isValidEmail(emailTextField.text!) {
-                let alertController = UIAlertController(title: "Invalid e-mail", message: "Please enter your valid e-mail", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                errorMessage = "Please enter your valid e-mail"
             }
             else if !Utilities.isValidPassword(emailTextField.text!) {
-                let alertController = UIAlertController(title: "Invalid password", message: "Your password must be at lest 8 characters", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(okAction)
-                
-                self.present(alertController, animated: true, completion: nil)
+                errorMessage = "Your password must be at lest 8 characters"
             }
             else {
-                print("sign in")
+                var errorOccured = false
                 Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
                     if error == nil {
-                        print("error is nil in sign in")
+
                         let currentUser = Auth.auth().currentUser
                         
                         User.currentUser.email = currentUser?.email
                         
                         currentUser?.getIDTokenForcingRefresh(true) { idToken, error in
                             if error == nil {
-                                //User.currentUser.authtoken = idToken
-                                
-                                print("setting email")
-                                print(User.currentUser.email)
-                                print("photourl")
+                                User.currentUser.authtoken = idToken
+
                                 if let pictureURL = currentUser?.photoURL {
-                                    print("path exists")
                                     User.currentUser.pictureURL = pictureURL.path
-                                    print(User.currentUser.pictureURL)
                                 }
                                 
-                                //     APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
-                                // User.currentUser.setInfo(json: json, authtoken: idToken!)
-                                //      }
+                                     APIManager.shared.getUserInfo(idToken: idToken!) { (json) in
+                                 User.currentUser.setInfo(json: json, authtoken: idToken!)
+                                      }
                             } else {
-                                
+                                errorOccured = true
+                                errorMessage = "Authentication Error"
                             }
                         }
-                        shouldSegue = true
-                    } else {
-                        let alertController = UIAlertController(title: "Error!", message: "Invalid e-mail or password", preferredStyle: .alert)
-                        let alertAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                        alertController.addAction(alertAction)
-                        self.present(alertController, animated: true, completion: nil)
                         
+                    } else {
+                        errorOccured = true
+                        errorMessage = "Invalid e-mail or password"
                     }
+                }
+                
+                if !errorOccured {
+                    return true
                 }
             }
         }
-        print("SHOULD SEGUE")
-        print(shouldSegue)
-        return shouldSegue
+        
+        let alertController = UIAlertController(title: "Error occured", message: errorMessage, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertController.addAction(okAction)
+        
+        self.present(alertController, animated: true, completion: nil)
+
+        return false
         
     }
     
+    // MARK: - Lifecycle methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // UITextFieldDelegation
+        
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
